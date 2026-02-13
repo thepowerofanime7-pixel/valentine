@@ -283,7 +283,7 @@ button:hover {
   <p id="msg">Tap below…</p>
   <p class="scroll-hint">Scroll down ⬇</p>
 
-  <button id="openBtn">Open 💌</button>
+  <button onclick="reveal()">Open 💌</button>
 
   <div id="question" style="display:none;">
     <h3>Will you be my Valentine? ❤️</h3>
@@ -292,7 +292,7 @@ button:hover {
   </div>
 
   <div id="card" class="card">
-    Ziin 7abbit nfakrek eli rak tstahel denya w rani ba9i n7bek lyom w 8odoi kima awl marra ritek. Loving you from afar ya a7la 7aja da5let 7yety ♥
+    Ziin 7abbit nfakrek eli rak tstahel denya w rani ba9i n7bek lyom w 8odoi w kol yom kima awl marra ritek. Loving you from afar ya a7la 7aja da5let 7yety ♥
   </div>
 </div>
 
@@ -327,11 +327,25 @@ button:hover {
 <audio id="bgMusic" src="bgmusic.mp3" loop></audio>
 
 <script>
-const bgMusic = document.getElementById('bgMusic');
-const openBtn = document.getElementById('openBtn');
+let bgMusicStarted = false;
 
 function playClick() { document.getElementById("clickSound").currentTime=0; document.getElementById("clickSound").play(); }
 function playMsg() { document.getElementById("msgSound").currentTime=0; document.getElementById("msgSound").play(); }
+
+function reveal(){ 
+  playClick(); 
+  document.getElementById("msg").innerText="Galby."; 
+  playMsg(); 
+  document.getElementById("question").style.display="block";
+
+  // Play background music on first user interaction
+  if(!bgMusicStarted){
+    const bg = document.getElementById("bgMusic");
+    bg.volume = 0.2;
+    bg.play().catch(err=>console.log("Music autoplay blocked:", err));
+    bgMusicStarted = true;
+  }
+}
 
 function showCard(){ playClick(); document.getElementById("card").style.display="block"; playMsg(); }
 function runAway(btn){ playClick(); btn.style.position="absolute"; btn.style.left=Math.random()*70+"%"; btn.style.top=Math.random()*70+"%"; }
@@ -384,19 +398,6 @@ function growBouquet(){
 
   setTimeout(()=>{ msg.style.display="block"; }, 2000);
 }
-
-/* ----- OPEN BUTTON CLICK ----- */
-openBtn.addEventListener('click', () => {
-  playClick();
-  document.getElementById("msg").innerText="Galby.";
-  playMsg();
-  document.getElementById("question").style.display="block";
-
-  // Play bg music on first click
-  bgMusic.volume = 0.2;
-  bgMusic.play().catch(err => console.log("Music blocked:", err));
-});
 </script>
-
 </body>
 </html>
