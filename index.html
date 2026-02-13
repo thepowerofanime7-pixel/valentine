@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>to lbeshh ❤️</title>
+
+<style>
+/* ----- GENERAL STYLES ----- */
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(160deg, #ff4b6e, #ff0000, #8b0000);
+  overflow-x: hidden;
+  color: white;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* ----- BACKGROUND PARTICLES ----- */
+.particle, .background-particle {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.particle {
+  top: -40px;
+  animation: fall linear forwards;
+  opacity: 0.8;
+  filter: blur(0.5px);
+}
+
+.background-particle {
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.2);
+  top: -10px;
+  animation: floatParticles linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(120vh) rotate(360deg); }
+}
+
+@keyframes floatParticles {
+  to { transform: translateY(120vh); opacity: 0;}
+}
+
+/* ----- GLASS CARD ----- */
+.container {
+  backdrop-filter: blur(18px);
+  background: rgba(255,255,255,0.12);
+  border-radius: 25px;
+  padding: 25px;
+  width: 90%;
+  max-width: 340px;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+  position: relative;
+  margin-top: 30px;
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: auto;
+  background: url('her.jpg') center/cover no-repeat;
+  border: 4px solid white;
+  box-shadow: 0 0 25px rgba(255,255,255,0.8);
+  animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 10px white; }
+  to { box-shadow: 0 0 40px #ff4b6e; }
+}
+
+h1 { margin: 15px 0 5px; font-size: 1.6em; }
+
+button {
+  padding: 14px 22px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  margin: 8px;
+  font-weight: bold;
+  background: linear-gradient(45deg, #ff4b6e, #ff1a44);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255,255,255,0.2);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+button:hover::before {
+  top: -25%;
+  left: -25%;
+  opacity: 1;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255,0,0,0.5);
+}
+
+.card {
+  margin-top: 15px;
+  padding: 16px;
+  background: rgba(255,255,255,0.9);
+  color: #ff1a44;
+  border-radius: 20px;
+  display: none;
+  animation: fade 1s;
+  font-weight: bold;
+  line-height: 1.4em;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----- SCROLL HINT ----- */
+.scroll-hint {
+  font-size: 0.9em;
+  margin-top: 10px;
+  color: rgba(255,255,255,0.8);
+  animation: bounce 1.5s infinite alternate;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0px);}
+  to { transform: translateY(8px);}
+}
+
+/* ----- ALBUM SECTION ----- */
+.album {
+  margin-top: 40px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  width: 90%;
+  max-width: 800px;
+  padding: 25px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  position: relative;
+  animation: fadeAlbum 1s ease forwards;
+}
+
+.album::before {
+  content: "Scroll down ⬇";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3em;
+  color: rgba(255,255,255,0.08);
+  font-weight: bold;
+  pointer-events: none;
+  user-select: none;
+}
+
+.album .scroll-hint-album {
+  font-size: 0.85em;
+  margin-bottom: 10px;
+  color: rgba(255,255,255,0.7);
+  animation: bounce 1.5s infinite alternate;
+}
+
+.album h2 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  text-shadow: 0 0 12px #ff4b6e;
+}
+
+.photos {
+  display: grid;
+  grid-template-areas:
+    "cover photo1"
+    "photo2 photo3";
+  gap: 20px;
+}
+
+.album-photo {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 75, 110, 0.7);
+  overflow: hidden;
+  transition: all 0.5s ease;
+  animation: glowFrame 3s infinite alternate;
+}
+
+.album-photo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.4));
+  border-radius: 0 0 20px 20px;
+}
+
+.album-photo:hover {
+  transform: scale(1.1) rotate(1deg);
+  box-shadow: 0 0 40px rgba(255,75,110,0.9), 0 0 50px rgba(255,0,0,0.5);
+  cursor: pointer;
+}
+
+@keyframes glowFrame {
+  from { box-shadow: 0 0 10px rgba(255,75,110,0.5); }
+  to { box-shadow: 0 0 25px rgba(255,75,110,0.9); }
+}
+
+.album-photo.cover { grid-area: cover; }
+.album-photo.photo1 { grid-area: photo1; }
+.album-photo.photo2 { grid-area: photo2; }
+.album-photo.photo3 { grid-area: photo3; }
+
+/* ----- BOUQUET SECTION ----- */
+.bouquet-section {
+  margin-top: 40px;
+  text-align: center;
+  width: 90%;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  position: relative;
+  color: white;
+}
+
+.bouquet-section h2 {
+  font-size: 1.6em;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px #ff4b6e;
+}
+
+#bouquetImg {
+  width: 120px;
+  transform: scale(0);
+  transition: all 1s ease;
+  display: block;
+  margin: 0 auto;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ----- VALENTINE CARD ----- -->
+<div class="container">
+  <div class="photo"></div>
+
+  <h1>Happy Valentine</h1>
+  <p id="msg">Tap below…</p>
+  <p class="scroll-hint">Scroll down ⬇</p>
+
+  <button id="openBtn">Open 💌</button>
+
+  <div id="question" style="display:none;">
+    <h3>Will you be my Valentine? ❤️</h3>
+    <button onclick="showCard()">Yes</button>
+    <button onclick="runAway(this)">No</button>
+  </div>
+
+  <div id="card" class="card">
+    Ziin 7abbit nfakrek eli rak tstahel denya w rani ba9i n7bek lyom w 8odoi kima awl marra ritek. Loving you from afar ya a7la 7aja da5let 7yety ♥
+  </div>
+</div>
+
+<!-- ----- ALBUM SECTION ----- -->
+<div class="album">
+  <p class="scroll-hint-album">Scroll down ⬇</p>
+  <h2>Look at her Mashallah</h2>
+  <div class="photos">
+    <div class="album-photo cover" style="background-image:url('her1.jpg')"></div>
+    <div class="album-photo photo1" style="background-image:url('her2.jpg')"></div>
+    <div class="album-photo photo2" style="background-image:url('her3.jpg')"></div>
+    <div class="album-photo photo3" style="background-image:url('her4.jpg')"></div>
+  </div>
+</div>
+
+<!-- ----- BOUQUET SECTION ----- -->
+<div class="bouquet-section">
+  <h2>Surprise for you </h2>
+  <button onclick="growBouquet()">Tap it</button>
+  <div id="bouquet">
+    <img src="bouquet.png" alt="Bouquet" id="bouquetImg">
+    <p id="flowerMsg" style="display:none;">Some flowers to my girl 💖</p>
+  </div>
+</div>
+
+<!-- ----- SOUND EFFECTS ----- -->
+<audio id="clickSound" src="click.mp3"></audio>
+<audio id="msgSound" src="msg.mp3"></audio>
+<audio id="bouquetSound" src="bouquet.mp3"></audio>
+
+<!-- ----- BACKGROUND MUSIC ----- -->
+<audio id="bgMusic" src="bgmusic.mp3" loop></audio>
+
+<script>
+const bgMusic = document.getElementById('bgMusic');
+const openBtn = document.getElementById('openBtn');
+
+function playClick() { document.getElementById("clickSound").currentTime=0; document.getElementById("clickSound").play(); }
+function playMsg() { document.getElementById("msgSound").currentTime=0; document.getElementById("msgSound").play(); }
+
+function showCard(){ playClick(); document.getElementById("card").style.display="block"; playMsg(); }
+function runAway(btn){ playClick(); btn.style.position="absolute"; btn.style.left=Math.random()*70+"%"; btn.style.top=Math.random()*70+"%"; }
+
+function particle(){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.innerHTML=Math.random()>0.5?"❤":"✿";
+  p.style.left=Math.random()*100+"vw";
+  p.style.fontSize=(16+Math.random()*20)+"px";
+  p.style.animationDuration=(6+Math.random()*4)+"s";
+  document.body.appendChild(p);
+  setTimeout(()=>p.remove(),10000);
+}
+setInterval(particle,400);
+
+function bgParticle(){
+  const b=document.createElement("div");
+  b.className="background-particle";
+  b.style.left=Math.random()*100+"vw";
+  b.style.animationDuration=(8+Math.random()*5)+"s";
+  document.body.appendChild(b);
+  setTimeout(()=>b.remove(),13000);
+}
+setInterval(bgParticle,500);
+
+/* ----- BOUQUET ANIMATION ----- */
+function growBouquet(){
+  playClick();
+  document.getElementById("bouquetSound").play();
+  const img = document.getElementById("bouquetImg");
+  const msg = document.getElementById("flowerMsg");
+
+  img.style.transform = "scale(0)";
+  img.style.opacity = "0";
+  msg.style.display = "none";
+
+  setTimeout(()=>{
+    img.style.transform = "scale(1) rotate(0deg)";
+    img.style.opacity = "1";
+  }, 100);
+
+  setTimeout(()=>{
+    img.style.transition = "transform 2s ease-in-out";
+    img.style.transform = "scale(1) rotate(10deg)";
+    setTimeout(()=>{ img.style.transform = "scale(1) rotate(-10deg)"; }, 1000);
+    setTimeout(()=>{ img.style.transform = "scale(1) rotate(5deg)"; }, 2000);
+    setTimeout(()=>{ img.style.transform = "scale(1) rotate(0deg)"; }, 3000);
+  }, 1200);
+
+  setTimeout(()=>{ msg.style.display="block"; }, 2000);
+}
+
+/* ----- OPEN BUTTON CLICK ----- */
+openBtn.addEventListener('click', () => {
+  playClick();
+  document.getElementById("msg").innerText="Galby.";
+  playMsg();
+  document.getElementById("question").style.display="block";
+
+  // Play bg music on first click
+  bgMusic.volume = 0.2;
+  bgMusic.play().catch(err => console.log("Music blocked:", err));
+});
+</script>
+
+</body>
+</html>
